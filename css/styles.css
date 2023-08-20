@@ -209,7 +209,7 @@ button {
 }
 .gameboard{
     display: grid;
-    grid-template-columns: repeat(3, 200px);
+    grid-template-columns: repeat(3, 120px);
     grid-gap: 10px;
     justify-content: center;
     position: absolute;
@@ -221,14 +221,14 @@ button {
     transition: all .5s ease-in-out; 
 }
 .field{
-    height: 200px;
+    height: 120px;
     background-color: #e2e8f0;
     border-radius: 3px;
     transition: all .4s ease-in-out; 
-    background: url(https://zakarya-mks.github.io/tic-tac-toe_game/img/109602.svg),#e2e8f0;
-    background-size: 60%;
-    background-position: center;
-    background-repeat: no-repeat;
+    /* background: url(https://zakarya-mks.github.io/tic-tac-toe_game/img/109602.svg),#e2e8f0; */
+    background-size: 60% !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
 }
 @media (max-width:670px){
     .gameboard{
@@ -257,7 +257,7 @@ button {
     left: 50%;
     transform: translate(-50%, 50%);
     margin: 0 auto;
-    width: 70%;
+    width: 50%;
     min-width: 650px;
     transition: all .4s ease-in-out;
 }
@@ -285,6 +285,15 @@ button {
     border-radius: 1rem;
     text-transform: uppercase;
     transition: all .4s ease-in-out;
+}
+.player-x{
+    background-color: #ff6700;
+}
+.player-o{
+    background-color: #4cc9f0;
+}
+.ties{
+    background-color: grey;
 }
 @media (max-width:400px){
     .player-x,.player-o,.ties{
