@@ -15,8 +15,63 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Open+Sans:wght@300;400;600;700&family=Raleway:ital,wght@0,100;0,400;0,600;1,300;1,500;1,600&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;1,600;1,700&display=swap" rel="stylesheet">
 </head>
 <body>
+
     <section class="choosing">
-        <h1>x</h1> <h1>o</h1>
+        <div class="header">
+            <i class="fa-solid fa-x fa-3x"></i> 
+            <i class="fa-solid fa-o fa-3x"></i>
+        </div>
+        <h2>choose opponent type</h2>
+        <div class="pick-type">
+            <div class="computer">
+                <img src="images/chatbot.png" >
+                <button onclick="pickType(this)" id="btn" data-type="computer">
+                    <span class="shadow"></span>
+                    <span class="edge"></span>
+                    <span class="front text">computer</span>
+                </button>
+            </div>
+            <div class="player">
+                <img src="images/man.png" alt="">
+                <button onclick="pickType(this)"id="btn" data-type="player">
+                    <span class="shadow"></span>
+                    <span class="edge"></span>
+                    <span class="front text">player</span>
+                </button>
+            </div>
+        </div>
+        <div class="bb">
+            <button class="btn" onclick="play()"> PLAY</button>
+        </div>
     </section>
+    <section class="game">
+        <div class="gameboard">
+            <div class="field" data-index="0"></div>
+            <div class="field" data-index="1"></div>
+            <div class="field" data-index="2"></div>
+            <div class="field" data-index="3"></div>
+            <div class="field" data-index="4"></div>
+            <div class="field" data-index="5"></div>
+            <div class="field" data-index="6"></div>
+            <div class="field" data-index="7"></div>
+            <div class="field" data-index="8"></div>
+            <div class="score">
+                <div class="player-x">
+                    <p>player x</p>
+                    <h2>0</h2>
+                </div>
+                <div class="ties">
+                    <p>ties</p>
+                    <h2>0</h2>
+                </div>
+                <div class="player-o">
+                    <p>player-o</p>
+                    <h2>0</h2>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <script src="main.js"></script>
 </body>
 </html>

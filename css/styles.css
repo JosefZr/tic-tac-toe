@@ -1,5 +1,319 @@
 *{
     padding: 0;
     margin: 0;
-    display: inline-block;
+    outline: none;
+    box-sizing: border-box;
+}
+body{
+    width: 100%;
+    position: relative;
+    background: #29185e;
+    height: 100vh;
+    color: #fff;
+    text-transform: uppercase;
+    font-family: 'Montserrat', 'Open Sans', 'Raleway', 'Rubik', sans-serif;
+}
+.choosing{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #0003;
+    border-radius: 1rem;
+    width: 50%;
+    max-width: 600px;
+    min-height: 30vh;
+    box-shadow: 0 10px 20px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    transition: all .4s ease-in-out; 
+    opacity: 1;
+}
+@media (max-width:770px){
+    .choosing{
+        /* top: 35%; */
+        width: 95%;
+    }
+    .header {
+        display: none !important;
+    }
+}   
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100px;
+    margin: auto;
+    position: relative;
+    transform: translate(0px, -100px);
+}
+.pick-type{
+    transition: all .4s ease-in-out;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 70%;
+    padding: 0 0 30px;
+    margin: 20px auto 0;
+}
+.computer ,.player{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all .4s ease-in-out; 
+}
+@media (max-width:770px){
+    .pick-type{
+        flex-direction: column;
+    }
+    .player{
+        margin-top: 20px;
+    }
+
+}
+img{
+    padding-bottom: 20px;
+}
+button {
+    position: relative;
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    outline-offset: 4px;
+    transition: filter 250ms;
+    user-select: none;
+    touch-action: manipulation;
+}
+    .shadow {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 12px;
+        background: hsl(0deg 0% 0% / 0.25);
+        will-change: transform;
+        transform: translateY(2px);
+        transition: transform
+            600ms
+            cubic-bezier(.3, .7, .4, 1);
+    }
+    .edge {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 12px;
+        background: linear-gradient(
+            to left,
+            hsl(340deg 100% 16%) 0%,
+            hsl(340deg 100% 32%) 8%,
+            hsl(340deg 100% 32%) 92%,
+            hsl(340deg 100% 16%) 100%);
+    }
+    .front {
+    display: block;
+    position: relative;
+    padding: 12px 27px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    color: white;
+    background: hsl(345deg 100% 47%);
+    will-change: transform;
+    transform: translateY(-4px);
+    font-weight: bold;
+    transition: transform
+        600ms
+        cubic-bezier(.3, .7, .4, 1);
+}
+    button:hover {
+        filter: brightness(110%);
+    }
+    button:hover .front {
+        transform: translateY(-6px);
+        transition: transform
+            250ms
+            cubic-bezier(.3, .7, .4, 1.5);
+    }
+    button:active .front {
+        transform: translateY(-2px);
+        transition: transform 34ms;
+    }
+    button:hover .shadow {
+        transform: translateY(4px);
+        transition: transform
+            250ms
+            cubic-bezier(.3, .7, .4, 1.5);
+    }
+    button:active .shadow {
+        transform: translateY(1px);
+        transition: transform 34ms;
+    }
+    button:focus:not(:focus-visible) {
+        outline: none;
+    }
+/* play button  */
+.btn {
+    padding: 1.1em 2em;
+    background: none;
+    border: 2px solid #fff;
+    font-size: 15px;
+    color: #131313;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s;
+    border-radius: 12px;
+    background-color: #ecd448;
+    font-weight: bolder;
+    box-shadow: 0 2px 0 2px #000;
+    position: relative;
+    top: 90px;
+    width: 50%;
+}
+
+   .btn:before {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 120%;
+    background-color: #ff6700;
+    top: 50%;
+    transform: skewX(30deg) translate(-150%, -50%);
+    transition: all 0.5s;
+   }
+   
+   .btn:hover {
+    background-color: #4cc9f0;
+    color: #fff;
+    box-shadow: 0 2px 0 2px #0d3b66;
+   }
+   
+   .btn:hover::before {
+    transform: skewX(30deg) translate(150%, -50%);
+    transition-delay: 0.1s;
+   }
+   
+   .btn:active {
+    transform: scale(0.9);
+   }
+
+/* gameboard */
+.game{
+    display: none;
+    opacity: 0;
+    transition: all .4s ease-in-out; 
+
+}
+.gameboard{
+    display: grid;
+    grid-template-columns: repeat(3, 200px);
+    grid-gap: 10px;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(0%, 50%);
+    margin: 0 auto;
+    width: 100%;
+    transition: all .5s ease-in-out; 
+}
+.field{
+    height: 200px;
+    background-color: #e2e8f0;
+    border-radius: 3px;
+    transition: all .4s ease-in-out; 
+    background: url(https://zakarya-mks.github.io/tic-tac-toe_game/img/109602.svg),#e2e8f0;
+    background-size: 60%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+@media (max-width:670px){
+    .gameboard{
+    grid-template-columns: repeat(3, 120px);
+    }
+    .field{
+        height: 120px ;
+    }
+}
+@media (max-width:400px){
+    .gameboard{
+    grid-template-columns: repeat(3, 90px);
+    }
+    .field{
+        height: 90px ;
+    }
+}
+.score{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 35px;
+    position: absolute;
+    bottom: -20%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    margin: 0 auto;
+    width: 70%;
+    min-width: 650px;
+    transition: all .4s ease-in-out;
+}
+@media (max-width:670px){
+    .score{
+        min-width: 400px;
+        width: 100%;
+    }
+}
+@media (max-width:400px){
+    .score{
+        gap: 5px;
+        min-width: 250px;
+    }
+}
+.player-x,.player-o,.ties{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 25px 20px;
+    background-color: black;
+    width: 25%;
+    border-radius: 1rem;
+    text-transform: uppercase;
+    transition: all .4s ease-in-out;
+}
+@media (max-width:400px){
+    .player-x,.player-o,.ties{
+        padding: 10px 0 !important;
+    }
+}
+.player-x h2,.player-o h2,.ties h2{
+    font-size: 2rem;
+}
+.player-x p,.player-o p,.ties p{
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+@media (max-width:670px){
+    .player-x p,.player-o p,.ties p{
+        letter-spacing: 0;
+        font-size: 1rem;
+    }
+    .player-x,.player-o,.ties{
+        padding: 25px 0;
+    }
+}
+@media (max-width:400px){
+    .player-x p,.player-o p,.ties p{
+        padding: 10px 0 !important;
+        font-size: 0.8rem;
+    }
+    .player-x,.player-o,.ties{
+        gap :0;
+    }
 }
