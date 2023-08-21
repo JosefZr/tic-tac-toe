@@ -8,7 +8,7 @@ body{
     width: 100%;
     position: relative;
     background: #29185e;
-    height: 100vh;
+    height: 80vh;
     color: #fff;
     text-transform: uppercase;
     font-family: 'Montserrat', 'Open Sans', 'Raleway', 'Rubik', sans-serif;
@@ -325,4 +325,37 @@ button {
     .player-x,.player-o,.ties{
         gap :0;
     }
+}
+.winner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    background-color: blueviolet;
+    text-transform: uppercase;
+    display: none;
+    opacity: 0;
+    transition: all .5s ease-in-out;
+}
+.winner h2{
+    padding: 1rem;
+    letter-spacing: 1px;
+    font-weight: 500;
+    font-size: 1.3rem;
+}
+.winner .buttons{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    width: 25%;
+    margin: 2rem auto;
+}
+.winner .btn{
+    top :0;
+    width: 100%;
 }
